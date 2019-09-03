@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticateService } from '../authenticate.service';
 
 @Component({
   selector: 'app-login',
@@ -8,15 +9,20 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public username;
+  public user = [];
+
+  constructor(private authenticate: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit(form) {
-	console.log(form);
-  	localStorage.removeItem('token');
-  	//localStorage.setItem('token', 1234)
-  	//this.router.navigate(['/dashboard']);
+    // this.authenticate.validateUser(form).subscribe(res => this.user = res);
+    this.authenticate.validateUser(form).subscribe(res => {
+      console.log(res);
+      console.log(res['username']);
+      // this.username = res.username;
+    });
   }
 }
