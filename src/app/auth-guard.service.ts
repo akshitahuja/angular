@@ -11,8 +11,8 @@ export class AuthGuardService implements CanActivate {
 	params;
   constructor(private authenticate: AuthenticateService, private route: Router) { }
 
-  canActivate(next: ActivatedRouteSnapshot,
+  canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
-  	console.log(this.authenticate.checkSession(this.params));
+  	
   }
 }
