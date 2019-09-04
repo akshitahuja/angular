@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticateService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   checkSession(params) {
-  	return this.http.get('http://localhost:4200/student-backend/auth.php');
+  	this.http.get('http://localhost:4200/student-backend/auth.php').subscribe(res => {
+      if(res['success'] == true) {
+        localStorage.setItem('is_logged_in', 'true');
+      }
+      else {
+        localStorage.setItem('is_logged_in', 'false');
+        this.router.navigate(['login']);
+      }
+    });
   }
 
   validateUser(form) {

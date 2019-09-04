@@ -1,13 +1,9 @@
 <?php
 require_once('header-allow.php');
 session_start();
-// $_SESSION['user_id'] = 12;
-		// $_SESSION['username'] = 'as';
-		// echo $_SESSION['user_id'];
-// print_r($_SESSION);
-// die;
+
 if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id']) && isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-	$data = array('success' => true, 'new' => 123);
+	$data = array('success' => true);
 	echo json_encode($data);
 	exit;
 }
