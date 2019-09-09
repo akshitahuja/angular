@@ -13,4 +13,8 @@ export class AppComponent {
   constructor(private authenticate: AuthenticateService) { 
     this.authenticate.checkSession(this.params);
   }
+
+  // logoutApp() {
+  // 	console.log('Logout App');
+  // }
 }

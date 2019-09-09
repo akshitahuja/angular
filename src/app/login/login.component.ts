@@ -9,6 +9,10 @@ import { AuthenticateService } from '../authenticate.service';
 })
 export class LoginComponent implements OnInit {
 
+  errorMsg = '';
+  username = 'admin';
+  password = '';
+
   constructor(private authenticate: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
@@ -21,6 +25,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user_id', res['extraData']['user_id']);
         localStorage.setItem('username', res['extraData']['username']);
       	this.router.navigate(['/dashboard']);
+      }
+      else {
+        this.errorMsg = res['msg'];
+        this.password = '';
       }
     });
   }

@@ -28,3 +28,14 @@ function validate_user($conn) {
 	echo json_encode($response);
 	exit;
 }
+
+function logoutApp($conn) {
+	session_start();
+	session_unset('user_id');
+	session_unset('username');
+	
+	$response = array('success' => true);
+	
+	echo json_encode($response);
+	exit;
+}

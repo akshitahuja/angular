@@ -4,6 +4,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign In</h5>
+            <h6 class="text-danger text-center" *ngIf="errorMsg">{{errorMsg}}</h6>
             <form class="form-signin" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
               <div class="form-label-group">
                 <label for="inputEmail">Username</label>
@@ -13,7 +14,7 @@
 
               <div class="form-label-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" #password="ngModel" name="password" id="password" class="form-control" placeholder="Password" required ngModel>
+                <input type="password" #password="ngModel" name="password" id="password" class="form-control"  placeholder="Password" required ngModel>
                 <small *ngIf="password.touched && password.invalid" class="text-danger">Password is required!</small>
               </div>
 
